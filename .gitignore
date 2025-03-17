@@ -1,0 +1,7 @@
+local-redis-stack.conf
+
+# exclude everything
+redis_data/*
+
+# exception to the rule
+!redis_data/.gitkeep

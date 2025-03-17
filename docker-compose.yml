@@ -1,0 +1,14 @@
+services:
+  redis:
+    container_name: redis-stack
+    image: redis/redis-stack-server:7.2.0-v6
+    ports:
+      - 6380:6380
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+    volumes:
+      - ./redis_data:/data
+      - ./local-redis-stack.conf:/redis-stack.conf
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
